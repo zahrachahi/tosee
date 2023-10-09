@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Git Commands</title>
+</head>
+<body>
+
+    <a href="index.html">Acceder a la page index</a>
+    <nav id="menu"></nav>
+
+    <script>
+        // Fonction pour créer le menu
+        function creerMenu() {
+            // Sélectionnez la balise nav avec l'identifiant "menu"
+            var menu = document.getElementById("menu");
+
+            // Créez une liste non ordonnée (ul)
+            var ul = document.createElement("ul");
+
+            // Créez les éléments de menu (li) avec des liens (a)
+            var pages = ["Page 2", "Page 4"];
+
+            for (var i = 0; i < pages.length; i++) {
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                a.href = "page" + (i === 0 ? 2 : 4) + ".html";// Lien vers les pages
+                a.textContent = pages[i];
+                li.appendChild(a);
+                ul.appendChild(li);
+            }
+
+            // Ajoutez la liste au menu
+            menu.appendChild(ul);
+        }
+
+        // Attachez la fonction de création du menu au chargement de la page
+        window.addEventListener("load", creerMenu);
+    </script>
+   
+    
+   <h1>Commandes Git</h1>
+   <h2>Utilisation</h2>
+   <pre>
+    git rebase [-i | --interactive] [<options>] [--exec <cmd>]
+        [--onto <newbase> | --keep-base] [<upstream> [<branch>]]
+    git rebase [-i | --interactive] [<options>] [--exec <cmd>] [--onto <newbase>]
+        --root [<branch>]
+    git rebase (--continue | --skip | --abort | --quit | --edit-todo | --show-current-patch)
+
+       <h2>DESCRIPTION</h2>
+    If <branch> is specified, git rebase will perform an automatic git switch <branch> before doing anything else.
+         Otherwise it remains on the current branch.
+
+    If <upstream> is not specified, the upstream configured in branch.<name>.remote and branch.<name>.merge options will be used 
+        (see git-config[1] for details) and the --fork-point option is assumed. If you are currently not on any branch or if the current 
+        branch does not have a configured upstream, the rebase will abort.
+        
+    All changes made by commits in the current branch but that are not in <upstream> are saved to a temporary area. This is the same set 
+        of commits that would be shown by git log <upstream>..HEAD; or by git log 'fork_point'..HEAD, if --fork-point is active (see the 
+            description on --fork-point below); or by git log HEAD, if the --root option is specified.
+        
+    The current branch is reset to <upstream> or <newbase> if the --onto option was supplied. This has the exact same effect as 
+        git reset --hard <upstream> (or <newbase>). ORIG_HEAD is set to point at the tip of the branch before the reset.
+   </pre>
+</body>
+</html>
